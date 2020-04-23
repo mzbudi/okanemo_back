@@ -1,12 +1,7 @@
 const { dataReturn } = require('../helper/dataReturn');
 
 const roleCheck = (req, res, next) => {
-  if (
-    req.body.username === '' ||
-    req.body.name === '' ||
-    req.body.role === '' ||
-    req.body.id === ''
-  ) {
+  if (req.body.role === '' || req.body.id === '') {
     return dataReturn(res, 400, { msg: 'Data Tidak Boleh Kosong' });
   } else {
     next();

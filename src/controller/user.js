@@ -7,8 +7,6 @@ const md5 = require('md5');
 const roleChanged = async (req, res) => {
   try {
     let setData = {
-      name: req.body.name,
-      username: req.body.username,
       role: req.body.role,
     };
     let id = req.body.id;
@@ -65,7 +63,7 @@ const dataChanged = async (req, res) => {
       });
     }
   } catch (error) {
-    return dataReturn(res, 400, { msg: 'Terjadi Kesalahan' });
+    throw error;
   }
 };
 
@@ -81,7 +79,10 @@ const getAllUsers = async (req, res) => {
       }
     });
 
-    if (data.resultLogin[0].role === 'Super') {
+    if (
+      data.resultLogin[0].role === 'Super' ||
+      data.resultLogin[0].role === 'Admin'
+    ) {
       const resultUser = await getAllUser();
       return dataReturn(res, 200, resultUser);
     } else {
