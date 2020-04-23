@@ -63,7 +63,7 @@ const dataChanged = async (req, res) => {
       });
     }
   } catch (error) {
-    throw error;
+    return dataReturn(res, 400, { msg: 'Terjadi Kesalahan' });
   }
 };
 

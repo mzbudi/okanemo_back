@@ -9,7 +9,12 @@ const roleCheck = (req, res, next) => {
 };
 
 const dataCheck = (req, res, next) => {
-  if (req.body.password === '' || req.body.name === '' || req.body.id === '') {
+  if (
+    req.body.password === '' ||
+    req.body.password === undefined ||
+    req.body.name === '' ||
+    req.body.id === ''
+  ) {
     return dataReturn(res, 400, { msg: 'Data Tidak Boleh Kosong' });
   } else {
     next();

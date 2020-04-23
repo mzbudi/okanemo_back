@@ -23,8 +23,7 @@ module.exports = {
         return dataReturn(res, 400, { msg: 'Username Atau Password Salah' });
       }
     } catch (error) {
-      // throw error;
-      return res.json('error');
+      return dataReturn(res, 400, { msg: 'Terjadi Kesalahan' });
     }
   },
 };
